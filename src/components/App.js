@@ -1,5 +1,4 @@
 import { useState } from "react";
-//import "../App.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
@@ -10,7 +9,7 @@ function App() {
   const [isEditProfileOpen, setEditProfileOpen] = useState(false);
   const [isAddPlaceOpen, setAddPlaceOpen] = useState(false);
   const [isEditAvatarOpen, setEditAvatarOpen] = useState(false);
-  const [isPreviewImageOpen, setpreviewImageopen] = useState(false);
+  const [isPreviewImageOpen, setPreviewImageOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({
     name: "",
     link: "",
@@ -26,7 +25,7 @@ function App() {
     setEditAvatarOpen(true);
   };
   const handleCardClick = (card) => {
-    setpreviewImageopen(true);
+    setPreviewImageOpen(true);
     setSelectedCard({
       name: card.name,
       link: card.link,
@@ -38,7 +37,7 @@ function App() {
     setAddPlaceOpen(false);
     setEditAvatarOpen(false);
     setSelectedCard(false);
-    setpreviewImageopen(false);
+    setPreviewImageOpen(false);
   };
 
   return (

@@ -23,6 +23,8 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({});
 
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     api.getUserInfo().then((user) => {
       setCurrentUser(user);
@@ -59,10 +61,12 @@ function App() {
     setDeletePopupOpen(false);
   };
 
-  const handleUpdateUser = ({ name, about }) => {
+  const handleUpdateUser = ({name, about}) => {
+    setIsLoading(true);
     api
-      .editProfile({ name, about })
+      .editProfile({name, about})
       .then((res) => {
+        setIsLoading(false);
         setCurrentUser(res);
         closeAllModals();
       })
@@ -85,7 +89,6 @@ function App() {
     api
       .deleteCards(selectedCard._id)
       .then((res) => {
-        console.log("is deleted");
         const newCards = cards.filter(
           (currentCard) => currentCard._id !== selectedCard._id
         );
@@ -118,6 +121,7 @@ function App() {
           <Footer />
 
           <EditProfileModal
+            isLoading={isLoading}
             isOpen={isEditProfileOpen}
             onClose={closeAllModals}
             onUpdateUser={handleUpdateUser}

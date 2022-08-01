@@ -22,13 +22,18 @@ const PopupWithConfirmation = (props) => {
         </button>
         <div className="modal__content">
           <p className="modal__question">{props.title}</p>
-          <form className="form form_type_delete" name={props.name} noValidate>
+          <form
+            className="form form_type_delete"
+            name={props.name}
+            noValidate
+            action="true"
+            onSubmit={props.onSubmit}
+          >
             <button
               className="modal__button modal__button_type_delete"
               type="submit"
-              onSubmit={props.onSubmit}
             >
-             {props.buttonText}
+              {props.buttonText}
             </button>
           </form>
         </div>

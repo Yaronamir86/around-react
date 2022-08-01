@@ -2,7 +2,7 @@ import React,{useState, useContext, useEffect} from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 
-const EditProfileModal = ({isOpen, onClose, onUpdateUser}) => {
+const EditProfileModal = ({isOpen, onClose, onUpdateUser, isLoading}) => {
     const currentUser = useContext(CurrentUserContext)
 
     const [name, setName] = useState('');
@@ -35,7 +35,7 @@ return(
             title="Edit-profile"
             name="edit-profile"
             isOpen={isOpen}
-            buttonText="save"
+            buttonText={`${isLoading ? "Saving..." : "Save"}`}
             onClose={onClose}
             onSubmit={handleSubmit}
           >

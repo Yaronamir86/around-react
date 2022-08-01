@@ -26,6 +26,7 @@ const PopupWithForm = (props) => {
           name={props.name}
           noValidate
           autoComplete="off"
+          onSubmit={props.onSubmit}
         >
           <h2 className="form__title">{props.title}</h2>
           {props.children}

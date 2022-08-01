@@ -12,7 +12,7 @@ const PopupWithConfirmation = (props) => {
           className="modal__close-btn"
           type="button"
           aria-label="close"
-          onclick={props.onClose}
+          onClick={props.onClose}
         >
           <img
             className="modal__close-icon modal__close-icon_type_delete"
@@ -21,13 +21,14 @@ const PopupWithConfirmation = (props) => {
           />
         </button>
         <div className="modal__content">
-          <p className="modal__question">Are you sure?</p>
+          <p className="modal__question">{props.title}</p>
           <form className="form form_type_delete" name={props.name} noValidate>
             <button
               className="modal__button modal__button_type_delete"
               type="submit"
+              onSubmit={props.onSubmit}
             >
-              Yes
+             {props.buttonText}
             </button>
           </form>
         </div>

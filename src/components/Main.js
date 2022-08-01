@@ -2,7 +2,7 @@ import editButton from "../images/Edit-Button.svg";
 import addButton from "../images/Add-Button.svg";
 
 import Card from "./Card";
-import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
 function Main({

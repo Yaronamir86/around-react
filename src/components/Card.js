@@ -1,6 +1,6 @@
 import trashIcon from "../images/Trash.svg";
 import likeSign from "../images/like-sign.svg";
-import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
 function Card(props) {

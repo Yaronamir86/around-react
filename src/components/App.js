@@ -7,7 +7,7 @@ import DeleteCardPopup from "./DeleteCardPopup";
 import ImagePopup from "./ImagePopup";
 import EditProfilePopup from "./EditProfilePopup";
 import api from "../utils/api";
-import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 

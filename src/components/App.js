@@ -82,19 +82,25 @@ function App() {
     api
       .editProfile({ name, about })
       .then((res) => {
-        setIsLoading(false);
         setCurrentUser(res);
         closeAllModals();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   const handleUpdateAvatar = (url) => {
+    setIsLoading(true);
     api.editAvatar(url).then((res) => {
       setCurrentUser(res);
       closeAllModals();
     })
-    .catch(console.log);
+    .catch(console.log)
+    .finally(() => {
+      setIsLoading(false);
+    });
   };
 
   const handleCardLike = (card) => {
@@ -115,23 +121,28 @@ function App() {
     api
       .deleteCards(selectedCard._id)
       .then((res) => {
-        setIsLoading(false);
         const newCards = cards.filter(
           (currentCard) => currentCard._id !== selectedCard._id
         );
         setCards(newCards);
         closeAllModals();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
-  const handleAddPlaceSubmit = (card) => {
+  const handleAddPlace = (card) => {
     setIsLoading(true);
     api.createCards(card).then((card) => {
-      setIsLoading(false);
       setCards([card, ...cards]);
       closeAllModals();
-    });
+    })
+    .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   return (
@@ -176,7 +187,7 @@ function App() {
           <AddPlacePopup
             isOpen={isAddPlaceOpen}
             onClose={closeAllModals}
-            onAddPlaceSubmit={handleAddPlaceSubmit}
+            onAddPlaceSubmit={handleAddPlace}
           />
         </CurrentUserContext.Provider>
       </div>

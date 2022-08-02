@@ -1,14 +1,21 @@
 import React from "react";
-import { useRef } from "react";
+import { useRef, useEffect  } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading }) => {
-  const url = useRef();
+  const urlInput = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateAvatar(url.current.value);
+    onUpdateAvatar(urlInput.current.value);
   }
+
+  useEffect(() => {
+    if (isOpen) {
+       urlInput.current.value = ''
+     }
+   }, [isOpen]) 
+
 
   return (
     <PopupWithForm
@@ -27,7 +34,7 @@ const EditAvatarPopup = ({ isOpen, onClose, onUpdateAvatar, isLoading }) => {
           placeholder="Image link"
           className="form__input form__input_type_image-link"
           required
-          ref={url}
+          ref={urlInput}
         />
         <span className="form__input-error avatar-input-error"></span>
       </fieldset>

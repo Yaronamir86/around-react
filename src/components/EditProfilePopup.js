@@ -10,8 +10,8 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUser, isLoading }) => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
+    setName(currentUser.name || '');
+    setDescription(currentUser.about || '');
   }, [currentUser]);
 
   const handleNameChange = (e) => {
@@ -48,7 +48,7 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUser, isLoading }) => {
           className="form__input form__input_type_name"
           minLength="2"
           maxLength="40"
-          value={name || ""}
+          value={name}
           onChange={handleNameChange}
           required
         />
@@ -61,7 +61,7 @@ const EditProfileModal = ({ isOpen, onClose, onUpdateUser, isLoading }) => {
           className="form__input form__input_type_about-me"
           minLength="2"
           maxLength="200"
-          value={description || ""}
+          value={description}
           onChange={handleDescriptionChange}
           required
         />
